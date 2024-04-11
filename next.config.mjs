@@ -1,8 +1,12 @@
 /** @type {import('next').NextConfig} */
 
-const API_URL = process.env.API_URL;
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+console.log("API_URL", API_URL);
 
 const nextConfig = {
+  images: {
+    domains: ["images.data.gov.sg"],
+  },
   async rewrites() {
     return [
       {

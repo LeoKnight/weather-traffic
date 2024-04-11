@@ -21,7 +21,6 @@ export const DateFilter = () => {
   const disabledDate: DatePickerProps["disabledDate"] = (current) => {
     return current && current > dayjs().endOf("day");
   };
-  console.log(date, time);
   return (
     <div className="flex justify-around h-full items-center justify-items-center gap-15">
       <div>

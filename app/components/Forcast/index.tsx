@@ -1,3 +1,15 @@
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
+
 export const Forcast = () => {
-  return <div className="h-full w-full bg-yellow-300">Forcast</div>;
+  const currentForecast = useSelector(
+    (state: RootState) => state.filter.currentForecast
+  );
+
+  return (
+    <div className="h-full w-full p-5 border-2	">
+      <h4>Forcast</h4>
+      <div>{currentForecast}</div>
+    </div>
+  );
 };

@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import axios from "axios";
 import dayjs from "dayjs";
+import request from "@/app/request";
 import { useSelector } from "react-redux";
 import { RootState } from "@/app/store";
 
@@ -15,14 +15,16 @@ export function useLocations() {
   const fetchData = async () => {
     const combined = dayjs(`${date}T${time}`).valueOf();
 
-    const res = await axios.get("/api/weather/1712586564739");
-    console.log(res);
+    const res = await request.get("/api/weather/1712586564739");
     setOptions(res.data);
   };
   useEffect(() => {
     if (date && time) {
       fetchData();
     }
+    return () => {
+      setOptions([]);
+    };
   }, [date, time]);
 
   useEffect(() => {});

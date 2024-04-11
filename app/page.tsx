@@ -5,6 +5,7 @@ import { Forcast } from "./components/Forcast";
 import { Locations } from "./components/Locations";
 import { store } from "./store";
 import { Provider } from "react-redux";
+import { ScreenShot } from "./components/ScreenShot";
 
 export default function Home() {
   return (
@@ -12,12 +13,12 @@ export default function Home() {
       <main className="px-12 py-8 md:p-10">
         <section className="min-h-16 flex  flex-row mb-5">
           {/* Date filter */}
-          <div className=" bg-blue-300 basis-full  sm:basis-3/4 ">
+          <div className=" basis-full  sm:basis-3/4 border-2">
             <DateFilter />
           </div>
         </section>
 
-        <section className="flex items-stretch justify-between flex-col  min-h-64 mb-3 sm:flex-row">
+        <section className="flex gap-2 items-stretch justify-between flex-col  min-h-64 mb-3 sm:flex-row">
           {/* List of locations */}
           <div className="basis-3/4">
             <Locations />
@@ -26,7 +27,11 @@ export default function Home() {
             <Forcast />
           </div>
         </section>
-        <section className="h-10 bg-red-500">screen shot</section>
+        <section className=" flex ">
+          <div className="p-5 min-h-64 basis-full sm:basis-3/4 border-2">
+            <ScreenShot />
+          </div>
+        </section>
       </main>
     </Provider>
   );
