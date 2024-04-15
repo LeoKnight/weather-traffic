@@ -11,24 +11,24 @@ export default function Home() {
   return (
     <Provider store={store}>
       <main className="px-12 py-8 md:p-10">
-        <section className="min-h-16 flex  flex-row mb-5">
+        <section className="min-h-16 flex flex-row mb-5">
           {/* Date filter */}
-          <div className=" basis-full  sm:basis-3/4 border-2">
+          <div className=" basis-full shadow-md sm:basis-3/4 border-2">
             <DateFilter />
           </div>
         </section>
 
         <section className="flex gap-2 items-stretch justify-between flex-col  min-h-64 mb-3 sm:flex-row">
           {/* List of locations */}
-          <div className="basis-3/4">
+          <div className="shadow-md sm:basis-3/4">
             <Locations />
           </div>
-          <div className="basis-1/5">
+          <div className="shadow-md sm:basis-1/5">
             <Forcast />
           </div>
         </section>
-        <section className=" flex ">
-          <div className="p-5 min-h-64 basis-full sm:basis-3/4 border-2">
+        <section className="flex">
+          <div className="p-5 min-h-64 shadow-md basis-full sm:basis-3/4 border-2">
             <ScreenShot />
           </div>
         </section>
