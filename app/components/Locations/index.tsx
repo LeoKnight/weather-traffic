@@ -22,9 +22,9 @@ export const Locations = () => {
     dispatch(setCurrentForecast(e.target.value.forecast));
   };
   return (
-    <div className="w-full h-full p-5 border-2">
+    <div className="p-2 border-2 overflow-hidden h-full flex flex-col sm:p-5">
       <h2 className="mb-2">locations:</h2>
-      <div className="h-5/6 overflow-x-scroll">
+      <div className="overflow-x-scroll  grow-1">
         {loading ? (
           <div>Loading...</div>
         ) : (

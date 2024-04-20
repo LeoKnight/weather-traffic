@@ -11,25 +11,26 @@ import { Ranking } from "./components/Ranking";
 export default function Home() {
   return (
     <Provider store={store}>
-      <main className="px-12 py-8 md:p-10">
-        <section className="min-h-16 flex flex-row mb-5">
+      <main className="px-4 py-4 sm:px-12 sm:py-8">
+        <section className="min-h-16 flex flex-row mb-2 sm:mb-5">
           {/* Date filter */}
-          <div className=" basis-full shadow-md sm:basis-3/4 border-2">
+          <div className=" basis-full shadow-md border-2 sm:basis-3/4 ">
             <DateFilter />
           </div>
         </section>
 
-        <section className="flex gap-2 items-stretch justify-between flex-col  min-h-45 max-h-60 mb-3 sm:flex-row">
+        <section className="h-96 flex gap-2 overflow-hidden items-stretch justify-between flex-col mb-3  sm:flex-row ">
           {/* List of locations */}
-          <div className="shadow-md sm:basis-3/4">
+          <div className="shadow-md basis-2/3 h-2/3 sm:h-full grow sm:grow-0 sm:basis-3/4">
             <Locations />
           </div>
-          <div className="shadow-md sm:basis-1/5">
+          <div className="shadow-md basis-1/3 sm:basis-1/5">
             <Forcast />
           </div>
         </section>
+
         <section className="flex">
-          <div className="p-5 min-h-64 shadow-md basis-full sm:basis-3/4 border-2">
+          <div className="p-2 sm:p-5 min-h-64 shadow-md basis-full sm:basis-3/4 border-2">
             <TrafficCamList />
           </div>
         </section>

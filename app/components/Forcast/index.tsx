@@ -7,7 +7,7 @@ export const Forcast = () => {
   );
 
   return (
-    <div className="h-full w-full p-5 border-2	">
+    <div className="p-2 w-full border-2 h-full sm:p-5">
       <h4 className="mb-2">Forcast:</h4>
       <div>{currentForecast}</div>
     </div>
