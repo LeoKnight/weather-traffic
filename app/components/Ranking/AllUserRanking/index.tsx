@@ -7,10 +7,12 @@ import dayjs from "dayjs";
 
 export const AllUserRanking = () => {
   const { data, error } = useSWR<{ data: ISearchRecord[] }>(
-    "/api/searchRecord/all-user-recent-search",
+    "/api/searchRecord/recent-search-by-all-users",
     request,
     {
       refreshInterval: 10000,
+      errorRetryCount: 3,
+      errorRetryInterval: 5000,
     }
   );
   if (error) return <div>Failed to load</div>;

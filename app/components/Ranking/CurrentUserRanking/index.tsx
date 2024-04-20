@@ -4,14 +4,13 @@ import request from "@/app/request";
 import { List } from "antd";
 import { ISearchRecord } from "@/app/interface";
 import dayjs from "dayjs";
+import { retryConfig } from "@/app/const/swr.config";
 
 export const CurrentUserRanking = () => {
   const { data, error } = useSWR<{ data: ISearchRecord[] }>(
-    "/api/searchRecord/current-user-recent-search",
+    "/api/searchRecord/recent-search-by-current-user",
     request,
-    {
-      refreshInterval: 10000,
-    }
+    retryConfig
   );
   if (error) return <div>Failed to load</div>;
   if (!data) return <div>Loading...</div>;
