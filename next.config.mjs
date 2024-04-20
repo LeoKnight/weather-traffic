@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
-console.log("API_URL", API_URL);
 
 const nextConfig = {
   images: {
@@ -11,7 +10,7 @@ const nextConfig = {
     return [
       {
         source: "/api/:path*",
-        destination: `${API_URL}/:path*`,
+        destination: `${API_URL}/api/:path*`,
       },
     ];
   },

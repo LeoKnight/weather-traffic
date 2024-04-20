@@ -5,17 +5,24 @@ import dayjs from "dayjs";
 import request from "@/app/request";
 import { useSelector } from "react-redux";
 import { RootState } from "@/app/store";
+import { IWeather } from "../interface";
 
 export function useLocations() {
-  const [options, setOptions] = useState([]);
+  const [options, setOptions] = useState<IWeather[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const date = useSelector((state: RootState) => state.filter.date);
   const time = useSelector((state: RootState) => state.filter.time);
   // date && time && fetchData();
   const fetchData = async () => {
-    const combined = dayjs(`${date}T${time}`).valueOf();
-
-    const res = await request.get("/api/weather/1712586564739");
+    setLoading(true);
+    const combined = `${date}T${time}`;
+    const res = await request.get("/api/weather", {
+      params: {
+        date_time: combined,
+      },
+    });
+    setLoading(false);
     setOptions(res.data);
   };
   useEffect(() => {
@@ -27,7 +34,5 @@ export function useLocations() {
     };
   }, [date, time]);
 
-  useEffect(() => {});
-
-  return [options];
+  return { options, loading };
 }

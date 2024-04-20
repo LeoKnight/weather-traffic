@@ -5,7 +5,8 @@ import { Forcast } from "./components/Forcast";
 import { Locations } from "./components/Locations";
 import { store } from "./store";
 import { Provider } from "react-redux";
-import { ScreenShot } from "./components/ScreenShot";
+import { TrafficCamList } from "./components/TrafficCamList";
+import { Ranking } from "./components/Ranking";
 
 export default function Home() {
   return (
@@ -18,7 +19,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="flex gap-2 items-stretch justify-between flex-col  min-h-64 mb-3 sm:flex-row">
+        <section className="flex gap-2 items-stretch justify-between flex-col  min-h-45 max-h-60 mb-3 sm:flex-row">
           {/* List of locations */}
           <div className="shadow-md sm:basis-3/4">
             <Locations />
@@ -29,8 +30,11 @@ export default function Home() {
         </section>
         <section className="flex">
           <div className="p-5 min-h-64 shadow-md basis-full sm:basis-3/4 border-2">
-            <ScreenShot />
+            <TrafficCamList />
           </div>
+        </section>
+        <section className="shadow-md p-5 mt-2">
+          <Ranking />
         </section>
       </main>
     </Provider>

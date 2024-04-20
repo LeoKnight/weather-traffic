@@ -5,36 +5,47 @@ import dayjs from "dayjs";
 import request from "@/app/request";
 import { useSelector } from "react-redux";
 import { RootState } from "@/app/store";
+import { ITrafficeCam } from "../interface";
 
 export function useTrafficCam() {
-  const [screenShots, setScreenShots] = useState([]);
-
+  const [screenShots, setScreenShots] = useState<ITrafficeCam[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
   const date = useSelector((state: RootState) => state.filter.date);
   const time = useSelector((state: RootState) => state.filter.time);
-  const currentLocation = useSelector(
+  const location = useSelector(
     (state: RootState) => state.filter.currentLocation
   );
+  const coordinates = useSelector(
+    (state: RootState) => state.filter.currentCoordinates
+  );
+
   // date && time && fetchData();
   const fetchData = async () => {
-    if (!currentLocation) return;
-    const combined = dayjs(`${date}T${time}`).valueOf();
+    if (!coordinates) {
+      return;
+    }
+    setLoading(true);
+    const date_time = `${date}T${time}`;
 
-    const res = await request.get(`/api/fraffic/${combined}`, {
+    const res = await request.get(`/api/traffic`, {
       params: {
-        longitude: currentLocation[0],
-        latitude: currentLocation[1],
+        location,
+        date_time,
+        longitude: coordinates[0],
+        latitude: coordinates[1],
       },
     });
+    setLoading(false);
     setScreenShots(res.data);
   };
   useEffect(() => {
-    if (date && time && currentLocation) {
+    if (date && time && coordinates && location) {
       fetchData();
     }
     return () => {
       setScreenShots([]);
     };
-  }, [date, time, currentLocation]);
+  }, [date, time, coordinates, location]);
 
-  return [screenShots];
+  return { screenShots, loading };
 }

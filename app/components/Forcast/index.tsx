@@ -8,7 +8,7 @@ export const Forcast = () => {
 
   return (
     <div className="h-full w-full p-5 border-2	">
-      <h4>Forcast</h4>
+      <h4 className="mb-2">Forcast:</h4>
       <div>{currentForecast}</div>
     </div>
   );
